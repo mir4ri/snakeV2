@@ -65,7 +65,7 @@ function drawScore() {
 function gameOver() {
 	clearInterval(loop);
 	ctx.font = "78px Lato";
-	ctx.fillStyle = "Red";
+	ctx.fillStyle = "#c70039";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
 	ctx.fillText("Game Over", width / 2, height / 2);
@@ -140,9 +140,9 @@ class Snake {
 	};
 	draw() {
 		for (var i = 0; i < this.data.length; i++) {
-			this.data[i].drawSquare("#E61C5D");
+			this.data[i].drawSquare("#a275e3");
 			if (score >= 10) {
-				this.data[i].drawSquare("#ffc0d0");
+				this.data[i].drawSquare("#dcaee8");
 			}
 			if (score >= 25) {
 				this.data[i].drawSquare("#ffe0e0");
@@ -230,7 +230,7 @@ var snake = new Snake();
 function loop() {
 	setTimeout(() => {
 		requestAnimationFrame(loop);
-	}, 40);
+	}, 45);
 	ctx.clearRect(0, 0, width, height);
 	drawScore();
 	drawBorder();

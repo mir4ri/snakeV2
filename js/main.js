@@ -1,7 +1,7 @@
 // Setup for canvas
 
 const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+const ctx    = canvas.getContext("2d");
 
 // Width and height
 
@@ -29,7 +29,7 @@ function setCellSize() {
 	}
 }
 
-canvas.width = width
+canvas.width  = width
 canvas.height = height
 
 const cellSize     = setCellSize();
@@ -53,18 +53,18 @@ function drawBorder() {
 // Output text on screen
 
 function drawScore() {
-	ctx.font = "56px Courier";
-	ctx.fillStyle = "Pink";
+	ctx.font = "64px Lato";
+	ctx.fillStyle = "#303030";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
-	ctx.fillText(score, width / 2, height / 2);
+	ctx.fillText(score, width / 30, height / 20);
 }
 
 // Game over
 
 function gameOver() {
 	clearInterval(loop);
-	ctx.font = "48px Courier";
+	ctx.font = "78px Lato";
 	ctx.fillStyle = "Red";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
@@ -114,7 +114,7 @@ cell.prototype.equal = function (otherCell) {
 
 class Apple {
 	constructor() {
-		this.position = new cell(10, 10);
+		this.position = new cell(30, 7);
 	}
 	draw() {
 		this.position.drawCircle("#FFBD39");
@@ -137,10 +137,25 @@ class Snake {
 		this.data = [new cell(7, 5), new cell(6, 5), new cell(5, 5)];
 		this.direction = { col: 1, row: 0 };
 		this.nextDirection = { col: 1, row: 0 };
-	}
+	};
 	draw() {
 		for (var i = 0; i < this.data.length; i++) {
 			this.data[i].drawSquare("#E61C5D");
+			if (score >= 10) {
+				this.data[i].drawSquare("#ffc0d0");
+			}
+			if (score >= 25) {
+				this.data[i].drawSquare("#ffe0e0");
+			}
+			if (score >= 40) {
+				this.data[i].drawSquare("#c5c5c5");
+			}
+			if (score >= 75) {
+				this.data[i].drawSquare("#7d7d7d");
+			}
+			if (score >= 100) {
+        this.data[i].drawSquare("#000");
+      }
 		}
 	}
 	listenToKey() {
@@ -189,7 +204,7 @@ class Snake {
 		elem = this.data[0];
 		let leftCollision = elem.col === + 1;
 		let topCollision = elem.row === + 1;
-		let rightCollision = elem.col === widthInCell - 2.;
+		let rightCollision = elem.col === widthInCell - 2;
 		let bottomCollision = elem.row === heightInCell - 2.;
 		let wallCollision = leftCollision || topCollision || rightCollision || bottomCollision;
 		let selfCollision = false;
@@ -208,8 +223,6 @@ var snake = new Snake();
 
 // function restart() {
 //   snake.reset();
-//   started = false
-
 // }
 
 // Request to animation
@@ -221,7 +234,7 @@ function loop() {
 	ctx.clearRect(0, 0, width, height);
 	drawScore();
 	drawBorder();
-  /*started && */ snake.update();
+  snake.update();
 	apple.draw();
 	snake.draw();
 }

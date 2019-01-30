@@ -7,7 +7,7 @@ const ctx    = canvas.getContext("2d");
 
 const width = window.innerWidth;
 
-let height = 1000;
+let height = 980;
 
 function setCellSize() {
 	if (window.innerWidth >= 1920) {
@@ -17,6 +17,7 @@ function setCellSize() {
 		height = 920;
 		return 10;
 	}
+	// 125% windows zoom
 	if (window.innerWidth >= 1536) {
     height = 900;
     return 12;
@@ -206,14 +207,14 @@ class Snake {
 	}
 	checkCollision(elem) {
 		elem = this.data[0];
-		let leftCollision = elem.col === + 1;
-		let topCollision = elem.row === + 1;
-		let rightCollision = elem.col === widthInCell - 2;
-		let bottomCollision = elem.row === heightInCell - 2;
+		let leftCollision = elem.col === + 0;
+		let topCollision = elem.row === + 0;
+		let rightCollision = elem.col === widthInCell - 1;
+		let bottomCollision = elem.row === heightInCell - 1;
 		let wallCollision = leftCollision || topCollision || rightCollision || bottomCollision;
 		let selfCollision = false;
 		for (var i = 0; i < this.data.length; i++) {
-			if (elem.equal(this.data[2])) {
+			if (elem.equal(this.data[1])) {
 				selfCollision = true;
 			}
 		}

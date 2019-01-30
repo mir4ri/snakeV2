@@ -125,8 +125,8 @@ class Apple {
 		this.position.drawCircle("#FFBD39");
 	}
 	update() {
-		let randomCol = Math.floor(Math.random() * (widthInCell - 2)) + 2;
-		let randomRow = Math.floor(Math.random() * (heightInCell - 2)) + 2;
+		let randomCol = Math.floor(Math.random() * (widthInCell - 4)) + 2;
+		let randomRow = Math.floor(Math.random() * (heightInCell - 4)) + 2;
 		this.position = new cell(randomCol, randomRow);
 	}
 }
@@ -207,14 +207,14 @@ class Snake {
 	}
 	checkCollision(elem) {
 		elem = this.data[0];
-		let leftCollision = elem.col === + 0;
-		let topCollision = elem.row === + 0;
-		let rightCollision = elem.col === widthInCell - 1;
-		let bottomCollision = elem.row === heightInCell - 1;
+		let leftCollision = elem.col === + 1;
+		let topCollision = elem.row === + 1;
+		let rightCollision = elem.col === widthInCell - 2;
+		let bottomCollision = elem.row === heightInCell - 2;
 		let wallCollision = leftCollision || topCollision || rightCollision || bottomCollision;
 		let selfCollision = false;
 		for (var i = 0; i < this.data.length; i++) {
-			if (elem.equal(this.data[1])) {
+			if (elem.equal(this.data[2])) {
 				selfCollision = true;
 			}
 		}

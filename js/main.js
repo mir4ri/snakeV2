@@ -18,7 +18,7 @@ function setCellSize() {
 		return 10;
 	}
 	if (window.innerWidth >= 1536) {
-    height = 924;
+    height = 900;
     return 12;
   }
 	if (window.innerWidth >= 1440) {

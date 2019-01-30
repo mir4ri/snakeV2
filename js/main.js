@@ -17,6 +17,10 @@ function setCellSize() {
 		height = 920;
 		return 10;
 	}
+	if (window.innerWidth >= 1536) {
+    height = 924;
+    return 12;
+  }
 	if (window.innerWidth >= 1440) {
 		height = 900;
 		return 10;
@@ -65,7 +69,7 @@ function drawScore() {
 function gameOver() {
 	clearInterval(loop);
 	ctx.font = "78px Lato";
-	ctx.fillStyle = "#c70039";
+	ctx.fillStyle = "#303030";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
 	ctx.fillText("Game Over", width / 2, height / 2);
@@ -120,8 +124,8 @@ class Apple {
 		this.position.drawCircle("#FFBD39");
 	}
 	update() {
-		let randomCol = Math.floor(Math.random() * (widthInCell - 2)) + 1;
-		let randomRow = Math.floor(Math.random() * (heightInCell - 2)) + 1;
+		let randomCol = Math.floor(Math.random() * (widthInCell - 2)) + 2;
+		let randomRow = Math.floor(Math.random() * (heightInCell - 2)) + 2;
 		this.position = new cell(randomCol, randomRow);
 	}
 }
@@ -154,7 +158,7 @@ class Snake {
 				this.data[i].drawSquare("#7d7d7d");
 			}
 			if (score >= 100) {
-        this.data[i].drawSquare("#000");
+        this.data[i].drawSquare("#303030");
       }
 		}
 	}
@@ -205,7 +209,7 @@ class Snake {
 		let leftCollision = elem.col === + 1;
 		let topCollision = elem.row === + 1;
 		let rightCollision = elem.col === widthInCell - 2;
-		let bottomCollision = elem.row === heightInCell - 2.;
+		let bottomCollision = elem.row === heightInCell - 2;
 		let wallCollision = leftCollision || topCollision || rightCollision || bottomCollision;
 		let selfCollision = false;
 		for (var i = 0; i < this.data.length; i++) {

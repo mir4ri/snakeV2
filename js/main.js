@@ -13,6 +13,7 @@ function setCellSize() {
 	if (window.innerWidth >= 1920) {
 		return 20;
 	}
+	// macbook more space
 	if (window.innerWidth >= 1680) {
 		height = 920;
 		return 10;
@@ -21,9 +22,10 @@ function setCellSize() {
 	if (window.innerWidth >= 1536) {
     height = 900;
     return 12;
-  }
+	}
+	// macbook
 	if (window.innerWidth >= 1440) {
-		height = 900;
+		height = 790;
 		return 10;
 	}
 	if (window.innerWidth >= 768) {

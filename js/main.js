@@ -15,7 +15,7 @@ function setCellSize() {
 	}
 	// macbook more space
 	if (window.innerWidth >= 1680) {
-		height = 920;
+		height = 940;
 		return 10;
 	}
 	// 125% windows zoom

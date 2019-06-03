@@ -230,6 +230,7 @@ var snake = new Snake();
 // Restart
 
 // function restart() {
+//   score = 0;
 //   snake.reset();
 // }
 

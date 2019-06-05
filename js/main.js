@@ -76,6 +76,11 @@ function gameOver() {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillText("Game Over", width / 2, height / 2);
+  window.onkeypress = function(e) {
+    if (e.keyCode == 13) {
+      requestAnimationFrame(loop);
+    }
+  };
 }
 
 // Draw a circle
@@ -147,12 +152,12 @@ class Snake {
   }
   draw() {
     for (var i = 0; i < this.data.length; i++) {
-      this.data[i].drawSquare("#a275e3");
+      this.data[i].drawSquare("#ccc1ff");
       if (score >= 10) {
         this.data[i].drawSquare("#dcaee8");
       }
       if (score >= 25) {
-        this.data[i].drawSquare("#ffe0e0");
+        this.data[i].drawSquare("#a275e3");
       }
       if (score >= 50) {
         this.data[i].drawSquare("#c5c5c5");
@@ -237,9 +242,10 @@ var snake = new Snake();
 // Request to animation
 
 function loop() {
+  started = true;
   setTimeout(() => {
     requestAnimationFrame(loop);
-  }, 45);
+  }, 37);
   ctx.clearRect(0, 0, width, height);
   drawScore();
   drawBorder();
@@ -250,8 +256,18 @@ function loop() {
 drawScore();
 drawBorder();
 
+ctx.font = "bold 38px Roboto";
+ctx.fillStyle = "#9ea9f0";
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
+ctx.fillText("PRESS ENTER", width / 2, height / 2);
+
+var started = false;
+
 window.onkeypress = function(e) {
-  if (e.keyCode == 13) {
-    requestAnimationFrame(loop);
+  if (!started) {
+    if (e.keyCode == 13) {
+      requestAnimationFrame(loop);
+    }
   }
 };

@@ -71,14 +71,18 @@ function drawScore() {
 
 function gameOver() {
   clearInterval(loop);
-  ctx.font = "78px Lato";
-  ctx.fillStyle = "#303030";
+  ctx.font = "38px Lato";
+  ctx.fillStyle = "#f3a953";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText("Game Over", width / 2, height / 2);
+
+  ctx.fillText("Press R to restart", width / 2, height / 2);
+  started = false;
   window.onkeypress = function(e) {
-    if (e.keyCode == 13) {
-      requestAnimationFrame(loop);
+    if (!started) {
+      if (e.key === "r") {
+        restart();
+      }
     }
   };
 }
@@ -234,10 +238,11 @@ var snake = new Snake();
 
 // Restart
 
-// function restart() {
-//   score = 0;
-//   snake.reset();
-// }
+function restart() {
+  started = true;
+  score = 0;
+  snake.reset();
+}
 
 // Request to animation
 
